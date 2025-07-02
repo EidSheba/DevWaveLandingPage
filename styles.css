@@ -1,0 +1,268 @@
+/* Root and Reset */
+
+:root {
+    --main-color: #009688;
+}
+
+
+/* Set box-sizing and remove default margin/padding */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body font */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* Navbar container */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--main-color);
+    /* Teal background */
+    padding: 10px 40px;
+    height: 70px;
+    color: white;
+}
+
+
+/* Logo styles */
+
+.logo img {
+    height: 40px;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Placeholder if no logo */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+/* Navigation menu styles */
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+
+/* Navigation links */
+
+.nav-menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: normal;
+    transition: all 0.2s ease;
+}
+
+
+/* Hover effect for links */
+
+.nav-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Active link style */
+
+.nav-menu a.active {
+    background-color: #0000000F;
+    font-weight: bold;
+    border-bottom: 2px solid #0000004D;
+}
+
+
+/* Contact info styles */
+
+.contact {
+    text-align: right;
+    font-size: 14px;
+}
+
+.contact strong {
+    display: block;
+    font-size: 16px;
+}
+
+
+/* Responsive styles */
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 15px 10px;
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .contact {
+        text-align: center;
+    }
+}
+
+
+/* Responsive: dropdown full width on mobile */
+
+@media (max-width: 800px) {
+    .dropdown-menu {
+        position: static;
+        min-width: 0;
+        box-shadow: none;
+        background: #fff;
+        border-radius: 0 0 6px 6px;
+        padding: 0;
+    }
+    .dropdown-menu a {
+        padding: 10px 16px;
+    }
+}
+
+
+/* Hamburger icon styles */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1100;
+}
+
+.hamburger span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+
+/* Mobile dropdown menu styles */
+
+.mobile-dropdown {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--main-color);
+    list-style: none;
+    padding: 20px 0 10px 0;
+    margin: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    z-index: 1001;
+    text-align: center;
+}
+
+.mobile-dropdown li {
+    margin: 10px 0;
+}
+
+.mobile-dropdown a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.mobile-dropdown a.active,
+.mobile-dropdown a:hover {
+    background: #0000000F;
+    font-weight: bold;
+}
+
+.mobile-dropdown.show {
+    display: block;
+}
+
+
+/* Responsive: show hamburger, hide nav-menu on mobile */
+
+@media (max-width: 800px) {
+    .hamburger {
+        display: flex;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .contact {
+        display: none;
+    }
+    .mobile-dropdown {
+        display: none;
+    }
+    .mobile-dropdown.show {
+        display: block;
+    }
+}
+
+
+/* Hide the nav-toggle checkbox */
+
+.nav-toggle {
+    display: none;
+}
+
+
+/* Show mobile dropdown when nav-toggle is checked */
+
+#nav-toggle:checked~.mobile-dropdown {
+    display: block;
+}
+
+
+/* Optionally, animate hamburger icon when active */
+
+#nav-toggle:checked+label.hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+#nav-toggle:checked+label.hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#nav-toggle:checked+label.hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* Adjust stacking order for label and dropdown */
+
+.hamburger {
+    position: relative;
+    z-index: 1101;
+}
+
+.mobile-dropdown {
+    z-index: 1100;
+}
